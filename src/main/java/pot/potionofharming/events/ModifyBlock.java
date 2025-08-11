@@ -8,10 +8,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import pot.potionofharming.ServerMash;
-import pot.potionofharming.block.StoreBlocks;
+import pot.potionofharming.block.StoreBlock;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ModifyBlock {
     private static class BlockChecker {
@@ -31,7 +30,7 @@ public class ModifyBlock {
             if (ServerMash.debug) ServerMash.LOGGER.info("BLOCK BROKEN");
             if (ServerMash.debug) ServerMash.LOGGER.info(blockState.getBlock().toString());
 
-            StoreBlocks.checkBlock(blockPos, world);
+            StoreBlock.store(blockPos, world);
         }));
 
 
@@ -54,7 +53,7 @@ public class ModifyBlock {
                 if (ServerMash.debug) ServerMash.LOGGER.info(b2.toString());
                 if (b1!=b2) {
                     if (ServerMash.debug) ServerMash.LOGGER.info("BLOCK PLACED");
-                    StoreBlocks.checkBlock(blockChecker.blockPos, blockChecker.world);
+                    StoreBlock.store(blockChecker.blockPos, blockChecker.world);
                 }
             });
             blockChecks.clear();
